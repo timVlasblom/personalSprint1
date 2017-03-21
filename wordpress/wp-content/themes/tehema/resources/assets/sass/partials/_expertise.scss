@@ -1,0 +1,31 @@
+.content-expertise {
+	background-image: url('resources/assets/images/background-expertise.jpeg');
+	background-size: cover;
+	background-position: center;
+	padding-top: 1%;
+	padding-bottom: 6%;
+	text-align: center;
+}
+
+.expertise-item {
+	background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1" height="3"><path d="M0,0L1,0L0,5Z" fill="rgba(256,256,256,0.8)"/></svg>');
+	background-size: 100%;
+	background-position: right top;
+	margin: 3% 35% 0 10%;
+	padding: 0.1% 2% 1%;
+	text-align: left;
+	@media (max-width: 1024px) {
+		padding: 0.5% 5% 1% 2%;
+	}
+
+	&:nth-child(odd) {
+		background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1" height="3"><path d="M0,0L1,0L1,5Z" fill="rgba(256,256,256,0.8)"/></svg>');
+		margin: 3% 10% 0 35%;
+		padding: 0.1% 2% 1%;
+		text-align: right;
+		background-position: left top;
+		@media (max-width: 1024px) {
+			padding: 0.5% 2% 1% 5%;
+		}
+	}
+}

@@ -1,115 +1,3 @@
-var c = document.getElementById("MyCanvas");
-var canvas = c.getContext("2d");
-
-var ballX = 290,
-    ballY = 480,
-    peddleX = 250,
-    peddleWidth = 100;
-    brickWidth = 39,
-    brickheigth = 19,
-    brickAmount = 90;
-    ballDirection = "north";
-    var bricksX = new Array();
-    var bricksY = new Array();
-
-startGame();
-keyboardControl();
-setInterval(function(){
-  moveBall();
-}, 50);
-
-function startGame(){
-  drawBall(ballX, ballY);
-  drawPeddle(250);
-  var x = 0;
-  var y = 0;
-  for (var i = 0; i < brickAmount; i++) {
-    drawBrick(x, y);
-    x = x + brickWidth +1;
-    if (x >= 600){
-      x = 0;
-      y = y + brickheigth +1;
-    }
-    bricksX[i] = x;
-    bricksY[i] = y;
-  }
-}
-
-function keyboardControl(){
- document.addEventListener('keydown', function(event) {
-   if(event.keyCode == 37 || event.keyCode == 65) {
-       movePeddle("right");
-   }
-   else if(event.keyCode == 39 || event.keyCode == 68) {
-        movePeddle("left");
-   }
- });
-}
-
-function drawPeddle(peddleX){
-  canvas.fillRect(peddleX, 550, peddleWidth, 10);
-  canvas.stroke();
-}
-
-function movePeddle(direction){
-  if (direction == "right"){
-    peddleX = peddleX - 10;
-    if(peddleX < 0){
-      peddleX = 0;
-    }
-    canvas.clearRect(0,549,600,100);
-  }
-  if (direction == "left"){
-    peddleX = peddleX + 10;
-    if(peddleX > 600 - peddleWidth){
-      peddleX = 600 - peddleWidth;
-    }
-    canvas.clearRect(0,549,600,100);
-  }
-  drawPeddle(peddleX);
-}
-
-function drawBrick(brickX, brickY){
-  switch (Math.floor((Math.random() * 3) + 1)){
-    case 1:{
-      canvas.fillStyle="#FF0000";
-    break;
-    }
-    case 2:{
-      canvas.fillStyle="#0000ff";
-    break;
-    }
-    case 3:{
-      canvas.fillStyle="#008000";
-    break;
-    }
-  }
-  canvas.fillRect(brickX, brickY, brickWidth, brickheigth);
-  canvas.stroke();
-  canvas.fillStyle="#000000";
-}
-
-function checkBricks(){
-  for (var i = 0; i < brickAmount; i++) {
-    if (ballX >= bricksX[i]  && ballX <= bricksX[i] +brickWidth ){
-      if ( ballY >= bricksY[i] && ballY <= bricksY[i] +brickheigth){
-        canvas.clearRect(bricksX[i], bricksY[i], brickWidth, brickheigth);
-        bricksX[i] = 600;
-        bricksY[i] = 0;
-        if (ballDirection == "northEast"){
-          ballDirection = "southEast";
-        }
-        if (ballDirection == "northWest"){
-          ballDirection = "southWest";
-        }
-        if (ballDirection == "north"){
-          ballDirection = "south";
-        }
-      }
-    }
-  }
-}
-
 function drawBall(ballX, ballY){
   canvas.fillRect(ballX, ballY, 10, 10);
   canvas.stroke();
@@ -205,4 +93,116 @@ function moveBall(){
   }
   checkBricks();
   drawBall(ballX, ballY);
+}
+
+function drawBrick(brickX, brickY){
+  switch (Math.floor((Math.random() * 3) + 1)){
+    case 1:{
+      canvas.fillStyle="#FF0000";
+    break;
+    }
+    case 2:{
+      canvas.fillStyle="#0000ff";
+    break;
+    }
+    case 3:{
+      canvas.fillStyle="#008000";
+    break;
+    }
+  }
+  canvas.fillRect(brickX, brickY, brickWidth, brickheigth);
+  canvas.stroke();
+  canvas.fillStyle="#000000";
+}
+
+function checkBricks(){
+  for (var i = 0; i < brickAmount; i++) {
+    if (ballX >= bricksX[i]  && ballX <= bricksX[i] +brickWidth ){
+      if ( ballY >= bricksY[i] && ballY <= bricksY[i] +brickheigth){
+        canvas.clearRect(bricksX[i], bricksY[i], brickWidth, brickheigth);
+        bricksX[i] = 600;
+        bricksY[i] = 0;
+        if (ballDirection == "northEast"){
+          ballDirection = "southEast";
+        }
+        if (ballDirection == "northWest"){
+          ballDirection = "southWest";
+        }
+        if (ballDirection == "north"){
+          ballDirection = "south";
+        }
+      }
+    }
+  }
+}
+
+function keyboardControl(){
+ document.addEventListener('keydown', function(event) {
+   if(event.keyCode == 37 || event.keyCode == 65) {
+       movePeddle("right");
+   }
+   else if(event.keyCode == 39 || event.keyCode == 68) {
+        movePeddle("left");
+   }
+ });
+}
+
+function drawPeddle(peddleX){
+  canvas.fillRect(peddleX, 550, peddleWidth, 10);
+  canvas.stroke();
+}
+
+function movePeddle(direction){
+  if (direction == "right"){
+    peddleX = peddleX - 10;
+    if(peddleX < 0){
+      peddleX = 0;
+    }
+    canvas.clearRect(0,549,600,100);
+  }
+  if (direction == "left"){
+    peddleX = peddleX + 10;
+    if(peddleX > 600 - peddleWidth){
+      peddleX = 600 - peddleWidth;
+    }
+    canvas.clearRect(0,549,600,100);
+  }
+  drawPeddle(peddleX);
+}
+
+var c = document.getElementById("MyCanvas");
+var canvas = c.getContext("2d");
+
+var ballX = 290,
+    ballY = 480,
+    peddleX = 250,
+    peddleWidth = 100;
+    brickWidth = 39,
+    brickheigth = 19,
+    brickAmount = 90;
+    ballDirection = "north";
+    var bricksX = new Array();
+    var bricksY = new Array();
+
+startGame();
+keyboardControl();
+setInterval(function(){
+  moveBall();
+}, 50);
+
+function startGame(){
+  drawBall(ballX, ballY);
+  drawPeddle(250);
+  var x = 0;
+  var y = 0;
+  for (var i = 0; i < brickAmount; i++) {
+    drawBrick(x, y);
+    x = x + brickWidth +1;
+    if (x >= 600){
+      x = 0;
+      y = y + brickheigth +1;
+    }
+    bricksX[i] = x;
+    bricksY[i] = y;
+  }
 }

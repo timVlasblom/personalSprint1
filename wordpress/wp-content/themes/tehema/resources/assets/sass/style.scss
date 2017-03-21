@@ -1,0 +1,23 @@
+/*!
+ *    Theme Name: Fairsource
+ *    Author: Competa
+ *    Description: Template for FairSource
+ *    Version: 0.0.1
+ *    Tags: FairSource
+ */
+
+// Vendors
+@import 'vendors/normalize';
+
+// Mixins
+@import 'mixins/position';
+
+// Modules
+@import 'modules/vars';
+@import 'modules/defaults';
+
+// Partials
+@import 'partials/expertise';
+@import 'partials/slider';
+
+// Pages
