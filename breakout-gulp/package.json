@@ -1,0 +1,22 @@
+{
+  "name": "breakout-gulp",
+  "version": "0.1.0",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-sass": "^3.1.0",
+    "gulp-useref": "^3.1.2",
+    "load-grunt-config": "^0.19.2",
+    "load-grunt-tasks": "^3.5.2"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "gulp": "^3.9.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
